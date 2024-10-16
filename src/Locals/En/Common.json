@@ -1,0 +1,260 @@
+{
+  "text": {
+    "DashBoard": "Dashboard",
+    "Employees": "Employees",
+    "Articles": "Policies",
+    "Matrices": "Legislations",
+    "masfofa": "Masfofa",
+    "home": "Main",
+    "download": "Print",
+    "back": "Back",
+    "close": "Close"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Login",
+    "invalidEmail": "Invalid email address",
+    "requiredEmail": "Email is required",
+    "invalidPassword": "Password must be at least 6 characters",
+    "requiredPassword": "Password is required",
+    "loginError": "Failed to sign in: "
+  },
+
+  "logout": {
+    "Logout": "Logout"
+  },
+  "EmpCard": {
+    "details": "Details",
+    "noEmp": "No Employees found"
+  },
+  "search": {
+    "searchEmployees": "Search "
+  },
+  "employees": {
+    "title": "Employees"
+  },
+  "job": {
+    "jobTitle": "Job Title",
+    "employeeId": "Employee ID",
+    "phoneNumber": "Phone Number"
+  },
+
+  "userInfo": {
+    "employeeName": "Employee Name:",
+    "employeeId": "Employee ID : ",
+    "hireDate": "Appointment Date : ",
+    "jobGrade": "Grade : ",
+    "department": "Department : ",
+    "officeNumber": "Office Number : ",
+    "jobTitle": "Job Title : ",
+    "phoneNumber": "Phone Number : ",
+    "email": " Email :",
+
+    "currentOffice": "Current Office : ",
+    "proxyEmployeeTitle": "Deputy Employees : ",
+    "proxyEmployeeName": "Deputy Employee Name : ",
+    "proxyPhoneNumber": "Deputy Phone Number : ",
+    "noProxyEmployees": "No Deputy employees for this user.  ",
+    "permissionsTitle": "Permissions : ",
+    "subjectTitle": "Article Title : ",
+    "noRelatedSubjects": "No related Articles found.",
+    "edituser": "Edit",
+    "delete": "Delete"
+  },
+  "articels": {
+    "title": "Article Title",
+    "searchPlaceholder": "Search ",
+    "noResults": "No Articles found.",
+    "details": "Details"
+  },
+  "subjectInfo": {
+    "subjectNumber": "Article Number :",
+    "subjectTitle": "Article Title ",
+    "subjectContent": "Article Content :",
+    "authorizedEmployee": "Authorized Employee ",
+    "sharedEmployees": "Participants Employees :",
+    "noRelatedSubjects": "No related Articles",
+    "negotiationLimit": "Authorization Limit :",
+    "notes": "Notes :",
+    "action": "Action"
+  },
+  "matrix": {
+    "title": "Matrix",
+    "selectSearchCriterion": "Select Search Criterion",
+    "searchByMatrix": "Search by-Legislation",
+    "searchByCompany": "Search by Company",
+    "searchBySubjects": "Search by Permissions",
+    "searchByEmployee": "Search by Employee Name",
+    "searchByJobTitle": "Search by Job Title",
+    "searchBySubjectContent": "Search By Subject Content",
+    "searchPlaceholder": "Search ",
+    "searchButton": "Search",
+    "clearFilters": "Clear Filters",
+    "searchByLabel": "Search by",
+    "details": "Details"
+  },
+
+  "legislationsinfo": {
+    "name": "Legislation Name :",
+    "releaseDate": "Release Date :",
+    "updateDate": "Amendment Date :",
+    "category": "Type of Legislation",
+    "publisher": "Publishing Entity :",
+    "introduction": "Introduction :",
+    "definitionsHeader": "Definitions Used in the Legislation",
+    "definitions": "Definitions :",
+    "permissions": "Associated Policies :",
+    "subjectTitle": "Policies Title :",
+    "noRelatedSubjects": "No Related Policies",
+    "notes": "Notes :"
+  },
+  "sidebar": {
+    "Legislations": "Legislations",
+    "Policies": "Policies",
+    "employees": "Employees",
+    "editAppearance": "Edit Theme",
+    "addUser": "Add User"
+  },
+  "edittheme": {
+    "topBanner": "Top Banner Image",
+    "bottomBanner": "Bottom Banner Image",
+    "logo": "Logo Image",
+    "upload": "Click to upload image",
+    "save": "Save",
+    "success": "Saved successfully",
+    "error": "An error occurred during saving, please try again.",
+    "homeElements": "Home Elements image"
+  },
+  "addaccount": {
+    "createAccount": "Create User Account",
+    "searchPlaceholder": "Search ",
+    "firstName": " Name",
+    "lastName": "Last Name",
+    "email": "User Email",
+    "password": "Password",
+    "registering": "Registering...",
+    "register": "Register",
+    "update": "Update",
+    "accType": "Account type",
+    "emp": "Employee",
+    "admin": "Admin",
+    "superAdmin": "Super Admin",
+    "noUsers": "No users available"
+  },
+  "userform": {
+    "empimg": "Employee Photo",
+    "adduser": "Add Employee ",
+    "employeeName": "Employee Name",
+    "employeeId": "Employee ID",
+    "hireDate": "Appointment Date",
+    "jobGrade": "Grade",
+    "department": "Department (Division - Section)",
+    "officeNumber": "Office Number",
+    "jobTitle": "Job Title",
+    "phoneNumber": "Phone Number",
+    "currentOffice": "Current Building and Office",
+    "email": "Email",
+    "proxyEmployeeName": "Deputy Employee Name",
+    "proxyEmployeeId": "Employee ID",
+    "proxyHireDate": "Appointment Date",
+    "proxyJobGrade": " Grade",
+    "proxyDepartment": "Department",
+    "proxyOfficeNumber": "Office Number",
+    "proxyJobTitle": "Job Title",
+    "proxyPhoneNumber": "Phone Number",
+    "proxyCurrentOffice": "Current Office Location",
+    "proxyEmail": "Email Address",
+    "proxyimg": "Deputy Employee Photo",
+    "title": "Deputy Employee",
+    "appproxy": " Add Deputy Employee ",
+    "save": "Save",
+    "edittitle": "Edit Employee Data"
+  },
+  "matrixCardDashboard": {
+    "update": "update",
+    "delete": "delete",
+    "noMatrix": "no legislations found"
+  },
+  "legislationEditForm": {
+    "updateLegislation": "Update Legislation",
+    "companyName": "Company name",
+    "legislationName": "Legislation Name",
+    "updateDate": "Amendment Date",
+    "releaseDate": "Release Date",
+    "Introduction": "Introduction",
+    "notes": "Notes",
+    "definitions": "Definitions",
+    "term": "Term",
+    "interpretation": "Interpretation",
+    "addNewDef": "Add NewDef",
+    "save": "save"
+  },
+  "legislationForm": {
+    "alert": "Data has been save successfully",
+    "addNewLegislations": "Add New Legislations",
+    "companyName": "Company name",
+    "legislationsName": "Legislations Name",
+    "updateDate": "Amendment Date",
+    "releaseDate": "Release Date",
+    "category": "Type of Legislation",
+    "Introduction": "Introduction",
+    "notes": "Notes",
+    "choose":"Choose",
+    "definitions": "Definitions",
+    "term": "Term",
+    "interpretation": "Interpretation",
+    "addNewDef": "Add NewDef",
+    "save": "save",
+    "search": "Search "
+  },
+  "subjectCardDashboard": {
+    "subjectNum": "Article Number",
+    "update": "update",
+    "delete": "delete",
+    "nosubjects": "no Articles found"
+  },
+  "subjectEditForm": {
+    "editSubject": "Edit Article",
+    "addSubject": "Add New Policy",
+    "search": "Search ",
+    "field": "Field",
+    "subjectNum": "Article Number",
+    "subjectTitle": "Article Title",
+    "subjectContent": "Article Content",
+    "negotiationLimit": "Authorization Limit",
+    "relatedLegislations": "Related legislations",
+    "hiredEmp": "Authorized Employee",
+    "chooseEmp": "choose Employee",
+    "notes": "Notes",
+    "sharedEmployees": "Participants Employees",
+    "chooseRole": "Choose Role",
+    "single": "Severally",
+    "grouped": "Jointly",
+    "delete": "delete",
+    "addNewEmp": "Add New Emp",
+    "save": "save"
+  },
+  "validation": {
+    "firstName": {
+      "required": "First name is required"
+    },
+    "lastName": {
+      "required": "Last name is required"
+    },
+    "email": {
+      "invalid": "Invalid email address",
+      "required": "Email is required"
+    },
+    "password": {
+      "minLength": "Password must be at least 6 characters",
+      "required": "Password is required"
+    }
+  },  "select":{
+    "law": "Law",
+    "system": "System",
+    "executiveRegulations": "Executive Regulations",
+    "decisions": "Decisions",
+    "instructions": "Instructions"
+  }
+}
