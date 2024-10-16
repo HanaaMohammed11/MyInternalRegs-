@@ -5,19 +5,20 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-//TODO: Add SDKs for Firebase products that you want to use
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyASkW2hoI7IvmnFNU0Mxje-am0OsESaELo",
-  authDomain: "myinternalregs.firebaseapp.com",
-  projectId: "myinternalregs",
-  storageBucket: "myinternalregs.appspot.com",
-  messagingSenderId: "689683351774",
-  appId: "1:689683351774:web:3ed8d57d3c19fba6655a4f",
-  measurementId: "G-GTEL5TJWVW"
+  apiKey: "AIzaSyCDFBCJkoWJPaPOy9gAOb-w3c1RV3_BAqs",
+  authDomain: "myinternalregs1.firebaseapp.com",
+  projectId: "myinternalregs1",
+  storageBucket: "myinternalregs1.appspot.com",
+  messagingSenderId: "969531463311",
+  appId: "1:969531463311:web:eb35805cf103f4f3dd02fa",
+  measurementId: "G-E7M5KDQW2V"
 };
 
 // Initialize Firebase

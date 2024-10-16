@@ -159,12 +159,12 @@ export default function MatrixForm({ onClose }) {
                 <option disabled value="">
         {t("legislationForm.choose")}
                 </option>
-                <option value="قانون">{t("select.law")}</option>
-                <option value="النظام">{t("select.system")}</option>
-                <option value="اللائحة التنفيذية">{t("select.executiveRegulations")}</option>
-           
-                <option value="قرارات ">{t("select.decisions")}</option>
-                <option value="تعليمات">{t("select.instructions")}</option>
+                <option value="ceoDecisions">{t("select.ceoDecisions")}</option>
+    <option value="boardDecisions">{t("select.boardDecisions")}</option>
+    <option value="generalAssemblyDecisions">{t("select.generalAssemblyDecisions")}</option>
+    <option value="regulation">{t("select.regulation")}</option>
+    <option value="policy">{t("select.policy")}</option>
+    <option value="basicSystem">{t("select.basicSystem")}</option>
               </Select>
             </div>
             {/* المقدمة */}

@@ -250,11 +250,12 @@
     }
   }
 ,
-  "select":{
-    "law": "قانون",
-    "system": "نظام",
-    "executiveRegulations": "اللائحة التنفيذية",
-    "decisions": "قرارات",
-    "instructions": "تعليمات"
-  }
+"select": {
+  "ceoDecisions": "قرارات الرئيس التنفيذي",
+  "boardDecisions": "قرارات مجلس الإدارة",
+  "generalAssemblyDecisions": "قرارات الجمعية العامة",
+  "regulation": "لائحة",
+  "policy": "سياسة",
+  "basicSystem": "النظام الأساس"
+}
 }

@@ -50,11 +50,12 @@ export default function MatrixLists() {
   }, []);
 
   const categories = [
-    "قانون",
-    "النظام",
-    "لائحة التنفيذية",
-    "قرارات",
-    "تعليمات",
+    "basicSystem",
+    "policy",
+    " regulation",
+    "generalAssemblyDecisions",
+    "boardDecisions",
+    "ceoDecisions",
   ];
 
   useEffect(() => {
