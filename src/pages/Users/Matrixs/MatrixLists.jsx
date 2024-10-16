@@ -50,13 +50,14 @@ export default function MatrixLists() {
   }, []);
 
   const categories = [
-    "basicSystem",
-    "policy",
-    " regulation",
-    "generalAssemblyDecisions",
-    "boardDecisions",
-    "ceoDecisions",
+    t("select.boardDecisions"),
+    t("select.generalAssemblyDecisions"),
+    t("select.regulation"),
+    t("select.basicSystem"),
+    t("select.policy"),
+    t("select.ceoDecisions")
   ];
+  
 
   useEffect(() => {
     const qmatrix = query(
