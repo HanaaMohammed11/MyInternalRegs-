@@ -38,6 +38,7 @@ export default function Topbanner() {
         const userData = querySnapshot.docs.map((doc) => doc.data());
         if (userData.length > 0) {
           setUser(userData[0]);
+          localStorage.setItem("accountType", userData[0].accountType);
         } else {
           console.log("No matching user found");
         }
@@ -45,9 +46,10 @@ export default function Topbanner() {
         console.error("Error fetching user data: ", error);
       }
     };
-
+  
     fetchUser();
   }, []);
+  
 
   const dropdownRef = useRef(null);
 
@@ -112,7 +114,7 @@ export default function Topbanner() {
       <Navbar
         fluid={true}
         rounded={true}
-        className=" bg-red-900 text-white "
+        className="bg-[#0a2c11] text-white "
       >
         <Navbar.Toggle className="bg-red text-yellow-50" />
 
@@ -120,7 +122,7 @@ export default function Topbanner() {
           {/* Logout Button */}
 
           <div className="flex">
-            {/* Logout Button */}
+       
             <div
               className="ml-8 font-semibold text-xl flex items-center justify-center text-white  cursor-pointer hover:bg-gray-600 p-2 "
               onClick={handleLogout}
@@ -132,7 +134,7 @@ export default function Topbanner() {
               <TbLogout2 size={30} />
             </div>
 
-            {/* Language Dropdown */}
+        
           </div>
           {/* Language Dropdown */}
           <div className="relative" ref={dropdownRef}>
@@ -169,13 +171,13 @@ export default function Topbanner() {
           </div>
         </div>
 
-        {/* Navbar Items */}
+
 
         {/* Navbar Items */}
         <Navbar.Collapse>
-          {user.accountType !== "employee" && (
+        {(localStorage.getItem("accountType") === "admin" || localStorage.getItem("accountType") === "superAdmin") && (
             <div
-              className="relative cursor-pointer text-xl  rounded-full transition-all duration-300 group bg-slate-950 hover:bg-[#CDA03D] px-9 "
+              className="relative cursor-pointer text-xl  rounded-full transition-all duration-300 group sm:bg-none lg:bg-slate-900 hover:bg-[#CDA03D] px-9 "
               onClick={() => navigate("/dashboard")}
             >
 
@@ -183,41 +185,38 @@ export default function Topbanner() {
                 {t("text.DashBoard")}
               </span>
               
-              {/* الخطوط الجانبية */}
+            
             </div>
           )}
 
+       
 
           <div
-            className="relative cursor-pointer text-xl rounded-full transition-all duration-300 group bg-slate-950 hover:bg-[#CDA03D] px-9 "
+            className="relative cursor-pointer text-xl rounded-full transition-all duration-300 group sm:bg-none lg:bg-slate-900 hover:bg-[#CDA03D] px-9 "
             onClick={() => navigate("/subjects")}
           >
            
             <span className="block p-2 text-white">{t("text.Articles")}</span>
-            {/* الخطوط الجانبية */}
-           
-            {/* الخطوط الجانبية */}
+         
           </div>
 
           <div
-            className="relative cursor-pointer text-xl rounded-full transition-all duration-300 group bg-slate-950 hover:bg-[#CDA03D] px-9 "
+            className="relative cursor-pointer text-xl rounded-full transition-all duration-300 group sm:bg-none lg:bg-slate-900 hover:bg-[#CDA03D] px-9 "
             onClick={() => navigate("/Matrix")}
           >
            
             <span className="block p-2 text-white">{t("text.Matrices")}</span>
-            {/* الخطوط الجانبية */}
-           
-            {/* الخطوط الجانبية */}
+         
           </div>
 
           <div
-            className="relative cursor-pointer text-xl rounded-full transition-all duration-300 group bg-slate-950 hover:bg-[#CDA03D] px-9 "
+            className="relative cursor-pointer text-xl rounded-full transition-all duration-300 group sm:bg-none lg:bg-slate-900 hover:bg-[#CDA03D] px-9 "
             onClick={() => navigate("/")}
           >
            
             <span className="block p-2 text-white">{t("text.home")}</span>
            
-            {/* الخطوط الجانبية */}
+          
           </div>
         </Navbar.Collapse>
       </Navbar>

@@ -14,6 +14,7 @@ import db from "../../../config/firebase";
 import { useTranslation } from "react-i18next";
 import Loader from "../../Login/loader";
 import { Checkbox } from "flowbite-react"; // Import Flowbite Checkbox
+import { CiSearch } from "react-icons/ci";
 
 export default function MatrixLists() {
   const { t, i18n } = useTranslation("global");
@@ -50,15 +51,17 @@ export default function MatrixLists() {
     fetchUserAndBanner();
   }, []);
 
-  const categories = [
-    t("select.boardDecisions"),
-    t("select.generalAssemblyDecisions"),
-    t("select.regulation"),
-    t("select.basicSystem"),
-    t("select.policy"),
-    t("select.ceoDecisions")
-  ];
-  
+  const categories = {
+ 
+
+    "النظام الأساس": t("select.basicSystem"),
+    "قرارات الجمعية العامة": t("select.generalAssemblyDecisions"),
+    "قرارات مجلس الإدارة": t("select.boardDecisions"),
+    لائحة: t("select.regulation"),
+    سياسة: t("select.policy"),
+    "قرارات الرئيس التنفيذي": t("select.ceoDecisions"),
+
+};
 
   useEffect(() => {
     const qmatrix = query(
@@ -263,19 +266,19 @@ export default function MatrixLists() {
 
       {/* Category filter section */}
       <div className="flex justify-center mt-4">
-        {categories.map((category, index) => (
-          <div key={index} className="mx-2">
-            <label className="flex items-center space-x-2 " dir={direction}>
-              <Checkbox
+      {Object.entries(categories).map(([key, value]) => (
+        <div key={key} className="mx-2">
+          <label className="flex items-center space-x-2" dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+            <Checkbox
               className="ml-2"
-                value={category}
-                checked={selectedCategories.includes(category)}
-                onChange={handleCategoryChange}
-              />
-              <span>{category}</span>
-            </label>
-          </div>
-        ))}
+              value={key} 
+              checked={selectedCategories.includes(key)}
+              onChange={handleCategoryChange}
+            />
+            <span>{value}</span>
+          </label>
+        </div>
+      ))}
       </div>
 
       {loading ? (
@@ -283,26 +286,10 @@ export default function MatrixLists() {
           <Loader />
         </div>
       ) : (
-        <div className="flex-grow">
-          {user.accountType === "employee" ? (
-            searchQuery && filteredMatrices.length > 0 ? (
-              // عرض نتائج البحث فقط إذا كانت هناك نتائج
-              <MatrixTable matrices={filteredMatrices} />
-            ) : searchQuery ? (
-              // عرض رسالة إذا لم يتم العثور على نتائج
-              <div className="flex justify-center items-center m-44">
-                <p>{t("matrixCardDashboard.noMatrix")}</p>
-              </div>
-            ) : (
-              // عرض رسالة إذا لم يتم إدخال أي استعلام بحث
-              <div className="flex justify-center items-center m-44">
-                <p>{t("matrixCardDashboard.noMatrix")}</p>
-              </div>
-            )
-          ) : (
-            // عرض جميع الجداول للمستخدمين غير الموظفين
+        <div className="flex-grow mb-36">
+         
             <MatrixTable matrices={filteredMatrices} />
-          )}
+        
         </div>
       )}
 

@@ -5,7 +5,7 @@
     border: none;
     box-shadow: #535353 2px 2px 9px;
     border-radius: 50%;
-    background-color: #771D1D; 
+    background-color: #052702; 
     color: white;
     font-size: 2000px;
     text-transform: uppercase;
@@ -63,7 +63,7 @@
 }
 
 .aux-gold {
-    background-color: #771D1D; 
+    background-color: #052702; 
 }
 .rotating-image {
     width: 100px; 

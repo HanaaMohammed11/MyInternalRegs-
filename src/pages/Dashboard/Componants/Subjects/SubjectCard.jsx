@@ -54,6 +54,7 @@ export default function SubjctCard({ searchTerm }) {
 
     return () => unsubscribe();
   }, []);
+
   const filteredSubjects = subjects.filter((subject) => {
     const searchText = searchTerm.toLowerCase().replace(/\s+/g, "");
     return (
@@ -138,7 +139,7 @@ export default function SubjctCard({ searchTerm }) {
         </div>
       ) : (
         <div className="p-4 text-center text-neutral-600">
-          {t("subjectCardDashboard.nosubjects")}
+          {t("subjectInfo.noRelatedSubjects")}
         </div>
       )}
 

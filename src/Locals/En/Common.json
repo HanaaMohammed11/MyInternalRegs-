@@ -29,7 +29,11 @@
     "noEmp": "No Employees found"
   },
   "search": {
-    "searchEmployees": "Search "
+    "searchEmployees": "search  ",
+    "subjectTitle" :" Article Title ",
+    "subjectNum":"Article Number",
+    "subjectContent":" Article Content",
+    "subsearch": "search for Article "
   },
   "employees": {
     "title": "Employees"
@@ -137,7 +141,7 @@
     "register": "Register",
     "update": "Update",
     "accType": "Account type",
-    "emp": "Employee",
+    "emp": "User",
     "admin": "Admin",
     "superAdmin": "Super Admin",
     "noUsers": "No users available"
@@ -250,7 +254,7 @@
       "minLength": "Password must be at least 6 characters",
       "required": "Password is required"
     }
-  }, "select": {
+  },  "select": {
     "ceoDecisions": "CEO Decisions",
     "boardDecisions": "Board Decisions",
     "generalAssemblyDecisions": "General Assembly Decisions",

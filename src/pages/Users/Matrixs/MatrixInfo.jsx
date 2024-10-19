@@ -42,8 +42,19 @@ export default function MatrixInfo() {
   const navigate = useNavigate();
   const [relatedsubjects, setRelatedsubjectss] = useState([]);
   const matrix = location.state.item || location.state.matrix;
-  console.log(matrix);
 
+  const categories = {
+ 
+
+    "النظام الأساس": t("select.basicSystem"),
+    "قرارات الجمعية العامة": t("select.generalAssemblyDecisions"),
+    "قرارات مجلس الإدارة": t("select.boardDecisions"),
+    لائحة: t("select.regulation"),
+    سياسة: t("select.policy"),
+    "قرارات الرئيس التنفيذي": t("select.ceoDecisions"),
+
+};
+  
   useEffect(() => {
     const usersCollectionRef = collection(db, "subjects");
 
@@ -76,9 +87,9 @@ export default function MatrixInfo() {
   return (
     <div>
       <Topbanner />
-      <div dir={direction} style={{ marginTop: "400px", marginRight: "15px" }}>
+      <div dir={direction} style={{  marginRight: "15px" }}>
         <button
-          className="text-center bg-[#CDA03D] py-2 px-9 shadow-xl  rounded-full text-white flex  text-lg font-bold hover:bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
+          className="text-center fixed mr-14 ml-14 bg-[#CDA03D] py-2 px-9 shadow-xl  rounded-full text-white flex  text-lg font-bold hover:bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
           onClick={handleBack}
           dir={direction}
         >
@@ -86,7 +97,7 @@ export default function MatrixInfo() {
         </button>
       </div>
       <div
-        className="  justify-center flex items-center"
+        className="  justify-center flex items-center mt-[400px]"
         style={{ paddingTop: "2px", paddingBottom: "440px" }}
         dir={direction}
       >
@@ -139,8 +150,9 @@ export default function MatrixInfo() {
                         {t("legislationsinfo.category")}
                       </td>
                       <td className="px-4 py-2 break-words w-1/2 overflow-hidden">
-                        {matrix.category}
-                      </td>
+    {categories[matrix.category]}
+  </td>
+
                     </tr>
                     <tr>
                       <td className="px-4 py-2 font-bold">
