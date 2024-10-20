@@ -22,10 +22,11 @@ export default function AdminMatrixInfo() {
  
 
     "النظام الأساس": t("select.basicSystem"),
+    سياسة: t("select.policy"),
+    لائحة: t("select.regulation"),
+
     "قرارات الجمعية العامة": t("select.generalAssemblyDecisions"),
     "قرارات مجلس الإدارة": t("select.boardDecisions"),
-    لائحة: t("select.regulation"),
-    سياسة: t("select.policy"),
     "قرارات الرئيس التنفيذي": t("select.ceoDecisions"),
 
 };

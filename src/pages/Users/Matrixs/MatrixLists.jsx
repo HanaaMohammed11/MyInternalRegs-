@@ -55,10 +55,11 @@ export default function MatrixLists() {
  
 
     "النظام الأساس": t("select.basicSystem"),
+    سياسة: t("select.policy"),
+    لائحة: t("select.regulation"),
+
     "قرارات الجمعية العامة": t("select.generalAssemblyDecisions"),
     "قرارات مجلس الإدارة": t("select.boardDecisions"),
-    لائحة: t("select.regulation"),
-    سياسة: t("select.policy"),
     "قرارات الرئيس التنفيذي": t("select.ceoDecisions"),
 
 };
@@ -265,7 +266,7 @@ export default function MatrixLists() {
       </div>
 
       {/* Category filter section */}
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4" dir={direction}>
       {Object.entries(categories).map(([key, value]) => (
         <div key={key} className="mx-2">
           <label className="flex items-center space-x-2" dir={i18n.language === "ar" ? "rtl" : "ltr"}>
