@@ -142,7 +142,8 @@ export default function AdminSubjectInfo() {
                     className="cursor-pointer hover:bg-[#fce8ca]"
                     onClick={() => {
                       const matrix = matrices.find(
-                        (item) => item.title === subject.relatedMatrix.title
+                        (item) =>
+                          item.title === subject.relatedLegislation.title
                       );
                       console.log(matrix);
 
