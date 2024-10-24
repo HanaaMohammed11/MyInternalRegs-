@@ -2,7 +2,14 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
-import { doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import db from "../../../../config/firebase";
 import { useTranslation } from "react-i18next";
 import { IoArrowBack } from "react-icons/io5";
@@ -21,11 +28,10 @@ export default function MatrixEditForm() {
  
 
     "النظام الأساس": t("select.basicSystem"),
-    سياسة: t("select.policy"),
-    لائحة: t("select.regulation"),
-
     "قرارات الجمعية العامة": t("select.generalAssemblyDecisions"),
     "قرارات مجلس الإدارة": t("select.boardDecisions"),
+    لائحة: t("select.regulation"),
+    سياسة: t("select.policy"),
     "قرارات الرئيس التنفيذي": t("select.ceoDecisions"),
 
 };
@@ -69,12 +75,41 @@ export default function MatrixEditForm() {
 
   const handleSave = async () => {
     const matrixRef = doc(db, "legislations", matrix.id);
+    const subjectsQuery = query(
+      collection(db, "subjects"),
+      where("relatedLegislation.id", "==", matrix.id)
+    );
+
     try {
+      // Update the legislation document
       await updateDoc(matrixRef, matrixData);
-      setIsPopupVisible(true);
+
+      // Update the relatedLegislation field in the subjects collection
+      const querySnapshot = await getDocs(subjectsQuery);
+      querySnapshot.forEach(async (docSnapshot) => {
+        const subjectRef = docSnapshot.ref;
+        const subjectData = docSnapshot.data();
+
+        // If the relatedLegislation is an object, directly update the relevant properties
+        if (
+          subjectData.relatedLegislation &&
+          subjectData.relatedLegislation.id === matrix.id
+        ) {
+          const updatedRelatedLegislation = {
+            ...subjectData.relatedLegislation,
+            ...matrixData, // Update with new matrix data
+          };
+
+          await updateDoc(subjectRef, {
+            relatedLegislation: updatedRelatedLegislation,
+          });
+        }
+      });
+
+      setIsPopupVisible(true); // Show success popup
     } catch (error) {
-      console.error("Error updating matrix:", error);
-      alert(t("legislationEditForm.errorUpdating")); // Inform the user about the error
+      console.error("Error updating matrix and relatedLegislation:", error);
+      alert(t("legislationEditForm.errorUpdating"));
     }
   };
 
@@ -83,13 +118,13 @@ export default function MatrixEditForm() {
       <Topbanner />
       <div dir={direction}>
         <button
-          className="text-center fixed bg-[#CDA03D] py-2 px-9 shadow-xl m-9 rounded-full text-white flex text-lg font-bold hover:bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
+          className="text-center fixed bg-[#CDA03D] py-2 px-3 shadow-xl m-9 rounded-full text-white flex text-lg font-bold hover:bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
           onClick={handleBack}
         >
-          <IoArrowBack className="mt-1 mr-3" /> {t("text.back")}
+          <IoArrowBack className="" />
         </button>
         <div
-          className="mx-auto p-8 w-full max-w-5xl mt-[400px]"
+          className="mx-auto p-8 w-full max-w-5xl mt-[150px]"
           style={{ paddingBottom: "400px" }}
         >
           <h1 className="text-3xl font-semibold text-white bg-[#CDA03D] p-5 rounded-t-xl">
@@ -125,15 +160,14 @@ export default function MatrixEditForm() {
                   value={matrixData.category}
                   onChange={handleInputChange}
                 >
-                
                   <option disabled value="">
-        {t("legislationForm.choose")}
-      </option>
-      {Object.entries(categories).map(([key, value]) => (
-        <option key={key} value={key}> 
-          {value}
-        </option>
-      ))}
+                    {t("legislationForm.choose")}
+                  </option>
+                  {Object.entries(categories).map(([key, value]) => (
+                    <option key={key} value={key}>
+                      {value}
+                    </option>
+                  ))}
                 </Select>
               </div>
               <div className="col-span-2">
