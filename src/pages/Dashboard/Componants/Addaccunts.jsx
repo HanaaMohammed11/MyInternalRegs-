@@ -370,7 +370,7 @@ export default function AddAccounts() {
                     />
                   </div>
                   <div className="w-full">
-                    <Button type="submit" disabled={isSubmitting}>
+                    <Button type="submit" className="bg-[#CDA03D]" disabled={isSubmitting}>
                       {isSubmitting
                         ? t("addaccount.registering")
                         : t("addaccount.register")}
@@ -544,6 +544,7 @@ export default function AddAccounts() {
                                     <div className="w-full">
                                       <Button
                                         type="submit"
+                                        className="bg-[#CDA03D]"
                                         disabled={isSubmitting}
                                       >
                                         {isSubmitting
