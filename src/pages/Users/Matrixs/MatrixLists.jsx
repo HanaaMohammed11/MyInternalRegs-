@@ -95,32 +95,30 @@ export default function MatrixLists() {
     return () => unsubscribe();
   }, []);
 
-  const searchSubjectContent = async (searchQuery) => {
-    try {
-      const subjectQuery = query(collection(db, "subjects"));
-      const subjectSnapshot = await getDocs(subjectQuery);
+ const searchSubjectContent = async (searchQuery) => {
+  try {
+    const subjectQuery = query(collection(db, "subjects"));
+    const subjectSnapshot = await getDocs(subjectQuery);
 
-      const subjectTitles = [];
-      const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    const subjectTitles = [];
+    const lowerCaseSearchQuery = searchQuery.toLowerCase();
 
-      subjectSnapshot.forEach((doc) => {
-        const subjectData = doc.data();
-        if (
-          subjectData.subjectContent
-            .toLowerCase()
-            .includes(lowerCaseSearchQuery)
-        ) {
-          subjectTitles.push(subjectData.subjectTitle);
-        }
-      });
+    subjectSnapshot.forEach((doc) => {
+      const subjectData = doc.data();
+      console.log("Document data:", subjectData); // Add this line to confirm structure
 
-      console.log("Subjects fetched:", subjectTitles);
-      return subjectTitles;
-    } catch (error) {
-      console.error("Error fetching subjects:", error);
-      return [];
-    }
-  };
+      if (subjectData.subjectContent?.toLowerCase().includes(lowerCaseSearchQuery)) {
+        subjectTitles.push(subjectData.subjectTitle);
+      }
+    });
+
+    console.log("Subjects matching content:", subjectTitles);
+    return subjectTitles;
+  } catch (error) {
+    console.error("Error fetching subjects:", error);
+    return [];
+  }
+};
 
   const handleSearch = async () => {
     let results = [];
@@ -279,21 +277,22 @@ export default function MatrixLists() {
       </div>
 
       {/* Category filter section */}
-      <div className="flex justify-center mt-4">
-      {Object.entries(categories).map(([key, value]) => (
-        <div key={key} className="mx-2">
-          <label className="flex items-center space-x-2" dir={i18n.language === "ar" ? "rtl" : "ltr"}>
-            <Checkbox
-              className="ml-2"
-              value={key} 
-              checked={selectedCategories.includes(key)}
-              onChange={handleCategoryChange}
-            />
-            <span>{value}</span>
-          </label>
-        </div>
-      ))}
-      </div>
+      <div className="flex flex-wrap justify-center mt-4">
+  {Object.entries(categories).map(([key, value]) => (
+    <div key={key} className="mx-2 mb-2"> 
+      <label className="flex items-center space-x-2" dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+        <Checkbox
+          className="ml-2"
+          value={key} 
+          checked={selectedCategories.includes(key)}
+          onChange={handleCategoryChange}
+        />
+        <span>{value}</span>
+      </label>
+    </div>
+  ))}
+</div>
+
 
       {loading ? (
   <div className="flex justify-center items-center my-44">
