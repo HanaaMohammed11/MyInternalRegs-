@@ -46,7 +46,7 @@ export default function AddAccounts() {
     lastName: "",
     email: "",
     password: "",
-    accountType: "employee",
+    accountType: "user",
   };
 
   const validationSchema = Yup.object().shape({
@@ -75,7 +75,7 @@ export default function AddAccounts() {
       const user = userCredential.user;
 
       const docRef = await addDoc(usersCollection, {
-        ...(accountType === "employee" && {
+        ...(accountType === "user" && {
           ownerAdmin: localStorage.getItem("id"),
         }),
         firstname: firstName,
@@ -105,23 +105,28 @@ export default function AddAccounts() {
     }
   };
 
+
+
   useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const q = collection(db, "users");
-        const querySnapshot = await getDocs(q);
+    const fetchEmployees = () => {
+      const q = collection(db, "users");
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const employeeList = querySnapshot.docs.map((doc) => ({
           docId: doc.id,
           ...doc.data(),
         }));
         setEmployees(employeeList);
-      } catch (error) {
+      }, (error) => {
         console.error("Error fetching employees:", error);
-      }
+      });
+  
+      // Clean up the subscription on unmount
+      return () => unsubscribe();
     };
-
+  
     fetchEmployees();
   }, [refresh]);
+  
 
   useEffect(() => {
     const qUser = query(
@@ -216,8 +221,8 @@ export default function AddAccounts() {
   return (
     <div className=" ">
       <div
-        className={` flex flex-col md:flex-row w-full justify-end items-center gap-4 md:gap-9 z-10 sticky lg:fixed md:fixed sm:sticky xs:sticky `}
-      >
+className={`flex flex-col lg:justify-center  lg:w-full  md:items-center md:justify-center  md:w-full r gap-4 md:gap-9 z-10 sticky lg:fixed md:fixed sm:sticky xs:sticky `}
+>
         <div
           className="btn-button sm:w-[100%] lg:w-[13%] md:w-[13%] text-center btn-curve btn-gold flex items-center text-lg font-bold hover:bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
           onClick={() => setOpenModal(true)}
@@ -228,8 +233,7 @@ export default function AddAccounts() {
         </div>
 
         {/* Search Input */}
-        <div className="search flex justify-center items-center">
-          <input
+        <div className="search flex  w-full  items-center z-10 sticky lg:fixed md:fixed sm:sticky xs:sticky mt-28">          <input
             type="text"
             className="rounded-full text-right h-9 px-4"
             placeholder={t("addaccount.searchPlaceholder")}
@@ -370,7 +374,7 @@ export default function AddAccounts() {
                     />
                   </div>
                   <div className="w-full">
-                    <Button type="submit" className="bg-[#CDA03D]" disabled={isSubmitting}>
+                    <Button type="submit" className="bg-[#C69221]" disabled={isSubmitting}>
                       {isSubmitting
                         ? t("addaccount.registering")
                         : t("addaccount.register")}
@@ -384,10 +388,10 @@ export default function AddAccounts() {
       </Modal>
 
       {/* Employees Table */}
-      <div className="overflow-x-auto flex flex-col items-center w-full ">
+      <div className="overflow-x-auto flex flex-col items-center w-full  mb-44">
         <div
           dir={direction}
-          className="overflow-x-auto w-full p-4 rounded-lg shadow-lg mt-10"
+          className="overflow-x-auto w-full p-4 rounded-lg shadow-lg mt-14 "
         >
           <table className="table-auto overflow-x-auto w-full min-w-[300px] bg-[#D3A17A] text-sm md:text-base lg:mt-9 md:mt-9 mt-16 sm:mt-14 ">
             <thead dir={direction}>
@@ -544,7 +548,7 @@ export default function AddAccounts() {
                                     <div className="w-full">
                                       <Button
                                         type="submit"
-                                        className="bg-[#CDA03D]"
+                                        className="bg-[#C69221]"
                                         disabled={isSubmitting}
                                       >
                                         {isSubmitting

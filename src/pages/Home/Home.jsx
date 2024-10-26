@@ -6,14 +6,12 @@ import MatrixLists from "../Users/Matrixs/MatrixLists";
 import { useTranslation } from "react-i18next";
 import SubjectsLists from "../Users/Subjects/SubjectList";
 import AdminDashboard from "../Dashboard/AdminDashboard";
-import Users from "../Users/Employee/Users";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Home() {
   const { t, i18n } = useTranslation("global");
   const direction = i18n.language === "ar" ? "rtl" : "ltr";
   const [selectedContent, setSelectedContent] = useState("matrices");
-  const isRTL = i18n.language === "ar";
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -22,7 +20,6 @@ export default function Home() {
 
   const renderContent = () => {
     switch (selectedContent) {
-    
       case "articles":
         return <SubjectsLists />;
       case "matrices":
@@ -35,38 +32,31 @@ export default function Home() {
   };
 
   return (
-    <div className="relative flex flex-col sm:flex-row min-h-screen bg-[#F5F5F5] w-full" dir={direction}>
-      <div className="sm:hidden absolute p-4 z-50">
+    <div className="flex min-h-screen  w-full" dir={direction}>
+      {/* Sidebar Toggle Button for Mobile */}
+      <div className="sm:hidden absolute top-4 left-4 z-[1700]">
         <button onClick={toggleSidebar}>
           {isSidebarOpen ? (
-            <FaTimes size={24} className="text-red-700" />
+            <HiX size={24} className="text-red-700 " />
           ) : (
-            <FaBars size={24} className="text-gray-700" />
+            <HiMenu size={24} className="text-gray-700" />
           )}
         </button>
       </div>
 
       {/* Sidebar */}
       <div
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } sm:block h-full flex-shrink-0 fixed top-0 w-64 z-50 shadow-lg`}
+        className={`fixed top-0 ${direction === "rtl" ? "right-0" : "left-0"} h-full w-64 z-[1500] shadow-lg bg-white transition-transform transform 
+          ${isSidebarOpen ? "translate-x-0" : direction === "rtl" ? "translate-x-full" : "-translate-x-full"} sm:translate-x-0`}
       >
-        <Cards setSelectedContent={setSelectedContent} />
+        <Cards setSelectedContent={setSelectedContent} toggleSidebar={toggleSidebar} />
       </div>
 
       {/* Main Content Area */}
-      <div className={`w-full flex flex-col ${isRTL ? "sm:mr-64" : "sm:ml-64"}`}>
-        <div className="">
-          <Topbanner />
-        </div>
-
-        {/* Main content */}
-        <div className="flex-grow p-4">{renderContent()}</div>
-
-        <div className="mt-auto ">
-          <Bottombanner  />
-        </div>
+      <div className={`flex-grow  ${direction === "rtl" ? "lg:mr-64" : "lg:ml-64"} `}>
+        <Topbanner />
+        <div className="flex-grow ">{renderContent()}</div>
+        <Bottombanner />
       </div>
     </div>
   );
