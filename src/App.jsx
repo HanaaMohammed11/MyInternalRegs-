@@ -39,7 +39,7 @@ export default function App() {
   useEffect(() => {
     const checkUserInFirestore = async (userId) => {
       try {
-        const q = query(collection(db, "users"), where("ID", "==", userId)); 
+        const q = query(collection(db, "users"), where("ID", "==", userId)); // Query by field "ID"
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
@@ -48,6 +48,7 @@ export default function App() {
         } else {
           console.log("User not found in Firestore with ID:", userId);
           setIsLoggedIn(false);
+          navigate("/mycorgov");
         }
       } catch (error) {
         console.error("Error checking Firestore: ", error);
@@ -65,7 +66,7 @@ export default function App() {
     }
   }, [navigate]);
 
-  console.log(isLoggedIn);
+
 
   return (
     <Routes>

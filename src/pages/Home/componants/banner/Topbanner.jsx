@@ -38,7 +38,6 @@ export default function Topbanner() {
         const userData = querySnapshot.docs.map((doc) => doc.data());
         if (userData.length > 0) {
           setUser(userData[0]);
-          // احفظ نوع الحساب في localStorage بحيث يكون متاحًا عند التنقل
           localStorage.setItem("accountType", userData[0].accountType);
         } else {
           console.log("No matching user found");
