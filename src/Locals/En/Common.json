@@ -265,5 +265,9 @@
   "pagination":{
      "of": "of",
       "page": "Page"
+ },"intropage":{
+"header":"MYINTERNALREGES",
+"content":"MYINTERNALREGS streamlines compliance management by providing a centralized platform to organize, update, and communicate essential regulations and policies, ensuring clarity and efficient governance within your organization"
+
  }
 }

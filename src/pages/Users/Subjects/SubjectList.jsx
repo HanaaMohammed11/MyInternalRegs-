@@ -60,7 +60,7 @@ export default function SubjectsLists() {
   <select
           value={searchType}
           onChange={(e) => setSearchType(e.target.value)}
-        className=" rounded-md  ml-2 mr-2  p-2"
+        className=" rounded-md  ml-2 mr-2  p-2 w-32"
         >
           <option value="" disabled>{t("search.subsearch")}</option>
           <option value="subjectTitle">{t("search.subjectTitle")}</option>

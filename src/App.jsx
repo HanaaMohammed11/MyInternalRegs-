@@ -30,6 +30,7 @@ import SubjectsList from "./pages/Dashboard/Componants/Subjects/SubjectList";
 import SubjectsLists from "./pages/Users/Subjects/SubjectList";
 import AdminMatrixInfo from "./pages/Dashboard/Componants/Matrix/MatrixInfo";
 import AdminSubjectInfo from "./pages/Dashboard/Componants/Subjects/AdminSubInfo";
+import IntroPage from "./pages/Login/introPage";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,7 +39,7 @@ export default function App() {
   useEffect(() => {
     const checkUserInFirestore = async (userId) => {
       try {
-        const q = query(collection(db, "users"), where("ID", "==", userId)); // Query by field "ID"
+        const q = query(collection(db, "users"), where("ID", "==", userId)); 
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
@@ -47,12 +48,11 @@ export default function App() {
         } else {
           console.log("User not found in Firestore with ID:", userId);
           setIsLoggedIn(false);
-          navigate("/login");
         }
       } catch (error) {
         console.error("Error checking Firestore: ", error);
         setIsLoggedIn(false);
-        navigate("/login");
+        navigate("/mycorgov");
       }
     };
 
@@ -62,7 +62,6 @@ export default function App() {
       checkUserInFirestore(userId);
     } else {
       setIsLoggedIn(false);
-      navigate("/login");
     }
   }, [navigate]);
 
@@ -94,8 +93,11 @@ export default function App() {
           <Route path="/MatrixForm" element={<MatrixForm />} />
         </>
       ) : (
-        <Route path="/login" element={<Form />} />
-      )}
+        <>
+        <Route path="/mycorgov" element={<IntroPage />} />
+   <Route path="/login" element={<Form />} />
+
+   </>      )}
     </Routes>
   );
 }
