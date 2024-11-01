@@ -4,11 +4,10 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import {
   collection,
-  doc,
-  getDoc,
+
   getDocs,
   query,
   where,
@@ -39,21 +38,17 @@ export default function App() {
   useEffect(() => {
     const checkUserInFirestore = async (userId) => {
       try {
-        const q = query(collection(db, "users"), where("ID", "==", userId)); // Query by field "ID"
+        const q = query(collection(db, "users"), where("ID", "==", userId)); 
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-          console.log("User found in Firestore:", querySnapshot.docs[0].data());
           setIsLoggedIn(true);
         } else {
-          console.log("User not found in Firestore with ID:", userId);
           setIsLoggedIn(false);
-          navigate("/mycorgov");
         }
       } catch (error) {
         console.error("Error checking Firestore: ", error);
         setIsLoggedIn(false);
-        navigate("/mycorgov");
       }
     };
 
@@ -97,6 +92,8 @@ export default function App() {
         <>
         <Route path="/mycorgov" element={<IntroPage />} />
    <Route path="/login" element={<Form />} />
+   <Route path="*" element={<IntroPage />} />
+
 
    </>      )}
     </Routes>
