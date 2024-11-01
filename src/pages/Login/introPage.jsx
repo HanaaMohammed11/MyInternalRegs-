@@ -91,9 +91,9 @@ function IntroPage() {
    
    {t("intropage.content")}
         </p>
-        <button onClick={()=>{navigate("/login")}} className="mt-8 px-6 py-2 border border-gray-300 rounded-full text-gray-700 hover:border-gray-700">
+        <button onClick={()=>{navigate("/login")}} className="w-44 mt-8 px-6 py-2 border border-gray-300 rounded-full text-gray-700 hover:border-gray-700">
         
-          <span className="text-yellow-600 " dir={direction}> {t("login.loginButton")} →</span>
+          <span className="text-yellow-600 text-xl font-semibold" dir={direction}> {t("login.loginButton")} →</span>
         </button>
       </main>
     </div>
