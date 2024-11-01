@@ -81,7 +81,7 @@ function IntroPage() {
       </header>
 
       {/* المحتوى الرئيسي */}
-      <main className="flex flex-col items-center justify-center px-14 mt-60 space-y-4 ">
+      <main className="flex flex-col items-center justify-center px-14 my-auto space-y-4 ">
         <div className=" ">
 
         <h2 className="lg:text-7xl md:text-7xl sm:text-3xl  text-3xl font-semibold text-[#8E6505] lg:mb-4">   {t("intropage.header")}
