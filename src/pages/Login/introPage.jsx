@@ -87,7 +87,7 @@ function IntroPage() {
         <h2 className="lg:text-7xl md:text-7xl sm:text-3xl  text-3xl font-semibold text-[#8E6505] lg:mb-4">   {t("intropage.header")}
         </h2>
         </div>
-        <p className="text-gray-500 max-w-screen-lg lg:text-2xl md:text-2xl sm:text-xl  text-xl ">
+        <p className="text-gray-500 max-w-screen-lg lg:text-2xl md:text-2xl sm:text-2xl  text-2xl ">
    
    {t("intropage.content")}
         </p>
